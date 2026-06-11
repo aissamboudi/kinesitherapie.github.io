@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aicha Taghzouti | Kinésithérapeute & Physiothérapeute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/uiw-icon@1.0.0/fonts/uiw-icon.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    :root {
+      --primary: #14a6c9;
+      --secondary: #58d2c6;
+      --dark: #0b6f88;
+      --light: #f0fafb;
+      --white: #ffffff;
+    }
+    body {
+      background: var(--light);
+      color: #333;
+      line-height: 1.7;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 111, 136, 0.94);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(20, 166, 201, 0.15);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 3rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #58d2c6;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* Header */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      background: linear-gradient(135deg, #14a6c9 0%, #58d2c6 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      animation: drift 20s infinite;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text {
+      flex: 1;
+      animation: slideInLeft 0.8s ease;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+    .hero-text h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 25px;
+      opacity: 0.95;
+      letter-spacing: 0.5px;
+    }
+    .hero-text p {
+      font-size: 1.05rem;
+      margin-bottom: 35px;
+      opacity: 0.92;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      animation: slideInLeft 0.8s ease 0.2s both;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: white;
+      color: #0b6f88;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid white;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border-color: white;
+    }
+    .btn-secondary:hover {
+      background: white;
+      color: #0b6f88;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      animation: slideInRight 0.8s ease;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.15));
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(0, 10px); }
+      75% { transform: translate(-10px, -5px); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Section Styles */
+    section {
+      padding: 100px 0;
+    }
+    section.alt {
+      background: var(--white);
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #0b6f88;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.05rem;
+      margin-bottom: 60px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+    .about {
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeInUp 0.6s ease;
+    }
+    .about p {
+      font-size: 1.08rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .service {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 5px 25px rgba(20, 166, 201, 0.08);
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      border-top: 4px solid #14a6c9;
+      position: relative;
+      overflow: hidden;
+    }
+    .service::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(20, 166, 201, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    .service:hover::before {
+      left: 100%;
+    }
+    .service:nth-child(1) { animation-delay: 0.1s; }
+    .service:nth-child(2) { animation-delay: 0.2s; }
+    .service:nth-child(3) { animation-delay: 0.3s; }
+    .service:nth-child(4) { animation-delay: 0.4s; }
+    .service:nth-child(5) { animation-delay: 0.5s; }
+    .service:nth-child(6) { animation-delay: 0.6s; }
+    .service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(20, 166, 201, 0.15);
+      border-top-color: #58d2c6;
+    }
+    .service-icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: bounce 2s infinite;
+      color: #14a6c9;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .service h3 {
+      color: #0b6f88;
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    .service p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    /* Benefits Section */
+    .benefits {
+      background: linear-gradient(135deg, rgba(20, 166, 201, 0.08), rgba(88, 210, 198, 0.08));
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .benefit {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(20, 166, 201, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      border-bottom: 4px solid #14a6c9;
+    }
+    .benefit:nth-child(1) { animation-delay: 0.1s; }
+    .benefit:nth-child(2) { animation-delay: 0.2s; }
+    .benefit:nth-child(3) { animation-delay: 0.3s; }
+    .benefit:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(20, 166, 201, 0.15);
+      border-bottom-color: #58d2c6;
+    }
+    .benefit-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #14a6c9;
+    }
+    .benefit h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #0b6f88;
+      font-weight: 600;
+    }
+    .benefit p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    /* Contact Section */
+    .contact {
+      text-align: center;
+    }
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      background: linear-gradient(135deg, #14a6c9 0%, #58d2c6 100%);
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 50px rgba(20, 166, 201, 0.2);
+      animation: fadeInUp 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: pulse-ring 4s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+    .contact-item {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      color: white;
+      animation: slideInLeft 0.6s ease forwards;
+      opacity: 0;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    .contact-item:nth-child(1) { animation-delay: 0.1s; }
+    .contact-item:nth-child(2) { animation-delay: 0.2s; }
+    .contact-item:nth-child(3) { animation-delay: 0.3s; }
+    .contact-item i {
+      font-size: 1.5rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .contact-item:hover i {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1) rotate(10deg);
+    }
+    .contact-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-contact {
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s;
+      border: 2px solid white;
+      color: white;
+      background: transparent;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+    .btn-contact:hover {
+      background: white;
+      color: #0b6f88;
+      transform: translateY(-3px);
+    }
+    /* Footer */
+    footer {
+      background: #0b6f88;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(11, 111, 136, 0.98);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-radius: 0 0 20px 20px;
+        text-align: center;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .hero-text h2 {
+        font-size: 1.1rem;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .services-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-box {
+        padding: 30px;
+      }
+      .contact-buttons {
+        flex-direction: column;
+      }
+      .btn-contact {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">AT Kine</a>
+      <ul id="navMenu">
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Header -->
+  <header id="home">
+    <div class="container hero">
+      <div class="hero-text">
+        <h1>Aicha Taghzouti</h1>
+        <h2>Kinésithérapeute & Physiothérapeute</h2>
+        <p>Votre bien-être, ma priorité. Prise en charge à domicile avec professionnalisme, écoute et bienveillance.</p>
+        <div class="btn-group">
+          <a href="#contact" class="btn"><i class="fas fa-calendar"></i> Prendre RDV</a>
+          <a href="https://wa.me/212626145859" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="./picon.png" alt="Aicha Taghzouti - Kinésithérapeute">
+      </div>
+    </div>
+  </header>
+  
+  <!-- About Section -->
+  <section id="about" class="alt">
+    <div class="container">
+      <h2 class="section-title">À Propos</h2>
+      <div class="about">
+        <p>Kinésithérapeute spécialisée dans la rééducation fonctionnelle, neurologique, pédiatrique, gériatrique et périnéale. Intervention à domicile pour offrir des soins adaptés dans le confort de votre environnement.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Mes Spécialités</h2>
+      <p class="section-subtitle">Une prise en charge adaptée à tous les âges et toutes les pathologies</p>
+      <div class="services-grid">
+        <div class="service"><div class="service-icon"><i class="fas fa-bone"></i></div><h3>Traumatologie</h3><p>Rééducation après blessures et traumatismes.</p></div>
+        <div class="service"><div class="service-icon"><i class="fas fa-user-injured"></i></div><h3>Rhumatologie</h3><p>Prise en charge des douleurs articulaires.</p></div>
+        <div class="service"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Neurologie</h3><p>Rééducation neurologique personnalisée.</p></div>
+        <div class="service"><div class="service-icon">
+            <!-- <i class="fas fa-venus"></i> -->
+            <i class="fas fa-female"></i>
+        </div><h3>Périnéale</h3><p>Rééducation périnéale pré et post-partum.</p></div>
+        <div class="service"><div class="service-icon"><i class="fas fa-baby"></i></div><h3>Pédiatrique</h3><p>Accompagnement des enfants.</p></div>
+        <div class="service"><div class="service-icon"><i class="fas fa-person-cane"></i></div><h3>Gériatrique</h3><p>Maintien de l'autonomie des seniors.</p></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">Pourquoi Me Choisir ?</h2>
+      <p class="section-subtitle">Des valeurs qui guident chaque consultation</p>
+      <div class="benefits-grid">
+        <div class="benefit"><div class="benefit-icon"><i class="fas fa-house"></i></div><h3>À Domicile</h3><p>Déplacement directement chez vous.</p></div>
+        <div class="benefit"><div class="benefit-icon"><i class="fas fa-heart"></i></div><h3>Écoute</h3><p>Suivi personnalisé selon vos besoins.</p></div>
+        <div class="benefit"><div class="benefit-icon"><i class="fas fa-star"></i></div><h3>Professionnalisme</h3><p>Prise en charge sérieuse et efficace.</p></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container contact">
+      <h2 class="section-title">Entrez en Contact</h2>
+      <p class="section-subtitle">Prêt à commencer votre parcours de rééducation ?</p>
+      <div class="contact-box">
+        <div class="contact-item"><i class="fas fa-phone"></i><span>06 26 14 58 59</span></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><span>aicha.taghzouti16@gmail.com</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Déplacement à domicile</span></div>
+        <div class="contact-buttons">
+          <a href="tel:+212626145859" class="btn-contact"><i class="fas fa-phone"></i> Appeler</a>
+          <a href="https://wa.me/212626145859" class="btn-contact" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>© 2026 Aicha Taghzouti - Kinésithérapeute & Physiothérapeute</footer>
+  
+  <script>
+    (function() {
+      // ========== SMOOTH SCROLL (scroll fluide) ==========
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const navHeight = 70;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: targetPosition - navHeight,
+              behavior: "smooth"
+            });
+            // Fermer le menu mobile après clic
+            if (window.innerWidth <= 768) {
+              navMenu.classList.remove('show');
+            }
+          }
+        });
+      });
+      
+      // ========== MENU MOBILE CORRIGÉ ==========
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const navMenu = document.getElementById('navMenu');
+      
+      if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          navMenu.classList.toggle('show');
+        });
+        
+        // Fermer le menu si on clique ailleurs
+        document.addEventListener('click', function(event) {
+          if (navMenu.classList.contains('show') && 
+              !navMenu.contains(event.target) && 
+              event.target !== mobileMenuBtn) {
+            navMenu.classList.remove('show');
+          }
+        });
+        
+        // Réinitialiser l'affichage au redimensionnement
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+            navMenu.classList.remove('show');
+            navMenu.style.display = '';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
